@@ -1,0 +1,7 @@
+{
+    "name": "ClearMind Backend",
+    "description": "Backend rest api for ClearMind",
+    "repository": "https://github.com/MarkOrestis/ClearMindBackend",
+    "keywords": ["node", "express"],
+    "image": "heroku/nodejs"
+}
