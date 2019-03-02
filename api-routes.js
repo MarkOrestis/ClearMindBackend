@@ -1,4 +1,4 @@
-import apiToken from './apiToken';
+// import apiToken from './apiToken.js';
 
 // api-routes.js
 // Initialize express router
@@ -13,7 +13,7 @@ router.get('/', function (req, res) {
 
 // TODO
 router.post('/', function (req, res) {
-    var token = req.headers['access-token'];
+    // var token = req.headers['access-token'];
     // require a token for pushing lat & lon to the backend? necessary?
     if (token == apiToken) {
         // create new user / take in lat & lon
