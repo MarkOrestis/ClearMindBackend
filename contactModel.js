@@ -15,7 +15,15 @@ var contactSchema = mongoose.Schema({
     create_date: {
         type: Date,
         default: Date.now
-    }
+    },
+    lat: {
+        type: String,
+        required: true
+    },
+    lon: {
+        type: String,
+        required: true
+    },
 });
 // Export Contact model
 var Contact = module.exports = mongoose.model('contact', contactSchema);

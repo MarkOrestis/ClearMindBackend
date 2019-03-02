@@ -1,3 +1,5 @@
+import apiToken from './apiToken';
+
 // api-routes.js
 // Initialize express router
 let router = require('express').Router();
@@ -7,6 +9,15 @@ router.get('/', function (req, res) {
         status: 'API Its Working',
         message: 'Welcome to RESTHub crafted with love!',
     });
+});
+
+// TODO
+router.post('/', function (req, res) {
+    var token = req.headers['access-token'];
+    // require a token for pushing lat & lon to the backend? necessary?
+    if (token == apiToken) {
+        // create new user / take in lat & lon
+    }
 });
 // Import contact controller
 var contactController = require('./contactController');

@@ -24,6 +24,8 @@ exports.new = function (req, res) {
     contact.gender = req.body.gender;
     contact.email = req.body.email;
     contact.phone = req.body.phone;
+    contact.lat = req.body.lat;
+    contact.lon = req.body.lon;
 // save the contact and check for errors
     contact.save(function (err) {
         // if (err)
@@ -54,6 +56,8 @@ contact.name = req.body.name ? req.body.name : contact.name;
         contact.gender = req.body.gender;
         contact.email = req.body.email;
         contact.phone = req.body.phone;
+        contact.lat = req.body.lat;
+        contact.lon = req.body.lon;
 // save the contact and check for errors
         contact.save(function (err) {
             if (err)
