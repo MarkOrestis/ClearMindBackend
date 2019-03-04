@@ -36,7 +36,7 @@ var fiveDayForecastRequest;
 
 var req = axios.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search', {
         params: {
-        apikey: '1WAkcU00DU57vkvarSxBvdp7TG35mmEx',
+        apikey: 'rkhFz5jAbAdFVbSy614sin8gdqXCSO4S',
         q: '33.4,-84.3' //lat long of Georgia Tech, this should be replaced with geolocation from location services
         }
     }).then((response) => {
@@ -53,7 +53,7 @@ req.then(x => {
 
     currentConditionRequest = axios.get('http://dataservice.accuweather.com/currentconditions/v1/' + this.key, {
         params: {
-            apikey: '1WAkcU00DU57vkvarSxBvdp7TG35mmEx',
+            apikey: 'rkhFz5jAbAdFVbSy614sin8gdqXCSO4S',
             details: true
         }
     }).then((response) => {
@@ -66,7 +66,7 @@ req.then(x => {
 
     fiveDayForecastRequest = axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + this.key, {
         params: {
-            apikey: '1WAkcU00DU57vkvarSxBvdp7TG35mmEx'
+            apikey: 'rkhFz5jAbAdFVbSy614sin8gdqXCSO4S'
         }
     }).then((response) => {
         this.dataForecast = response.data;
