@@ -20,7 +20,6 @@ var db = mongoose.connection;
 var port = process.env.PORT || 8080;
 // Send message for default URL
 app.get('/', (req, res) => {
-    getLocationKey
     res.send('Hello World with Express and love')
 });
 // Use Api routes in the App
@@ -37,7 +36,7 @@ var key = 0;
 
 var req = axios.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search', {
         params: {
-        apikey: 'A73eS4HfIiHVdvAhgCkFA9UJKHHUBvJy',
+        apikey: '1WAkcU00DU57vkvarSxBvdp7TG35mmEx',
         q: '33.4,-84.3' //lat long of Georgia Tech, this should be replaced with geolocation from location services
         }
     }).then((response) => {
