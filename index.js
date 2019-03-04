@@ -31,8 +31,8 @@ app.listen(port, function () {
 
 const axios = require('axios');
 
-var key = 0;
 var currentConditionRequest;
+var fiveDayForecastRequest;
 
 var req = axios.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search', {
         params: {
@@ -63,6 +63,18 @@ req.then(x => {
     });
 
     currentConditionRequest.then(x => exports.data = this.data);
+
+    fiveDayForecastRequest = axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + this.key, {
+        params: {
+            apikey: '1WAkcU00DU57vkvarSxBvdp7TG35mmEx'
+        }
+    }).then((response) => {
+        this.dataForecast = response.data;
+    }).catch((error) => {
+        console.log(error);
+    });
+
+    fiveDayForecastRequest.then(x => exports.dataForecast = this.dataForecast);
 });
 
 

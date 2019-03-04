@@ -23,6 +23,10 @@ router.get('/currentConditions', (req, res) => {
     res.json(myIndex.data);
 });
 
+router.get('/fiveDayForecast', (req, res) => {
+    res.json(myIndex.dataForecast);
+});
+
 // TODO
 router.post('/', function (req, res) {
     // var token = req.headers['access-token'];
