@@ -15,8 +15,12 @@ router.get('/', function (req, res) {
 router.get('/locationKey', (req, res) => {
     res.json({
         status: 'API Its Working',
-        message: myIndex.key,
+        key: myIndex.key,
     });
+});
+
+router.get('/currentConditions', (req, res) => {
+    res.json(myIndex.data);
 });
 
 // TODO

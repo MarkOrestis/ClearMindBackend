@@ -32,7 +32,7 @@ app.listen(port, function () {
 const axios = require('axios');
 
 var key = 0;
-
+var currentConditionRequest;
 
 var req = axios.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search', {
         params: {
@@ -50,7 +50,25 @@ var req = axios.get('http://dataservice.accuweather.com/locations/v1/cities/geop
 req.then(x => {
     console.log('key: ', this.key);
     exports.key = this.key;
+
+    currentConditionRequest = axios.get('http://dataservice.accuweather.com/currentconditions/v1/' + this.key, {
+        params: {
+            apikey: '1WAkcU00DU57vkvarSxBvdp7TG35mmEx',
+            details: true
+        }
+    }).then((response) => {
+        this.data = response.data;
+    }).catch((error) => {
+        console.log(error);
+    });
+
+    currentConditionRequest.then(x => exports.data = this.data);
 });
+
+
+
+
+// currentConditionRequest
 
 async function getLocationKey() {
     return axios.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search', {
