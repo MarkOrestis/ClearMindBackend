@@ -3,11 +3,19 @@
 // api-routes.js
 // Initialize express router
 let router = require('express').Router();
+const myIndex = require('./index');
 // Set default API response
 router.get('/', function (req, res) {
     res.json({
         status: 'API Its Working',
         message: 'Welcome to RESTHub crafted with love!',
+    });
+});
+
+router.get('/locationKey', (req, res) => {
+    res.json({
+        status: 'API Its Working',
+        message: myIndex.key,
     });
 });
 

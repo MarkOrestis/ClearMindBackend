@@ -19,7 +19,10 @@ var db = mongoose.connection;
 // Setup server port
 var port = process.env.PORT || 8080;
 // Send message for default URL
-app.get('/', (req, res) => res.send('Hello World with Express and love'));
+app.get('/', (req, res) => {
+    getLocationKey
+    res.send('Hello World with Express and love')
+});
 // Use Api routes in the App
 app.use('/api', apiRoutes)
 // Launch app to listen to specified port
@@ -29,6 +32,26 @@ app.listen(port, function () {
 
 const axios = require('axios');
 
+var key = 0;
+
+
+var req = axios.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search', {
+        params: {
+        apikey: 'A73eS4HfIiHVdvAhgCkFA9UJKHHUBvJy',
+        q: '33.4,-84.3' //lat long of Georgia Tech, this should be replaced with geolocation from location services
+        }
+    }).then((response) => {
+        this.key = response.data.Key; 
+        console.log('hallo key');   
+    })
+    .catch((error) => {
+        console.log(error)
+    });
+
+req.then(x => {
+    console.log('key: ', this.key);
+    exports.key = this.key;
+});
 
 async function getLocationKey() {
     return axios.get('http://dataservice.accuweather.com/locations/v1/cities/geoposition/search', {
@@ -37,8 +60,10 @@ async function getLocationKey() {
         q: '33.4,-84.3' //lat long of Georgia Tech, this should be replaced with geolocation from location services
         }
     }).then((response) => {
-        getCurrentConditions(response.data.Key);
-        get5DayForecast(response.data.Key);
+        console.log(response.data.Key);
+        key = response.data.Key;
+        // getCurrentConditions(response.data.Key);
+        // get5DayForecast(response.data.Key);
     })
     .catch((error) => {
         console.log(error)
@@ -72,4 +97,4 @@ function getCurrentConditions(locationKey) {
     });
 }
 
-getLocationKey(); //calls get5DayForecast and getCurrentConditions
+//getLocationKey(); //calls get5DayForecast and getCurrentConditions
