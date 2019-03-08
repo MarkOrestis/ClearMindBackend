@@ -30,7 +30,7 @@ exports.new = function (req, res) {
     contact.save(function (err) {
         // if (err)
         //     res.json(err);
-res.json({
+        res.json({
             message: 'New contact created!',
             data: contact
         });

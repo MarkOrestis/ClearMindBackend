@@ -18,11 +18,11 @@ var contactSchema = mongoose.Schema({
     },
     lat: {
         type: String,
-        required: true
+        required: false
     },
     lon: {
         type: String,
-        required: true
+        required: false
     },
 });
 // Export Contact model
