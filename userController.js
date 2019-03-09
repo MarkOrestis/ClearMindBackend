@@ -22,6 +22,8 @@ exports.new = function (req, res) {
     var user = new User();
     user.name = req.body.name ? req.body.name : user.name;
     user.password = req.body.password;
+    user.lat = req.body.lat;
+    user.long = req.bodt.long;
 // save the contact and check for errors
     user.save(function (err) {
         if (err)
@@ -50,6 +52,8 @@ exports.update = function (req, res) {
             res.send(err);
         user.name = req.body.name ? req.body.name : user.name;
         user.password = req.body.password;
+        user.lat = req.body.lat;
+        user.long = req.body.long;
 // save the user and check for errors
         user.save(function (err) {
             if (err)

@@ -12,6 +12,14 @@ var userSchema = mongoose.Schema({
     create_date: {
         type: Date,
         default: Date.now
+    },
+    lat: {
+        type: String,
+        required: true
+    },
+    long: {
+        type: String,
+        required: true
     }
 });
 // Export User model
