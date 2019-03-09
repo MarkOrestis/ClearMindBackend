@@ -6,24 +6,10 @@ var contactSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    email: {
+    password: {
         type: String,
         required: true
-    },
-    gender: String,
-    phone: String,
-    create_date: {
-        type: Date,
-        default: Date.now
-    },
-    lat: {
-        type: String,
-        required: false
-    },
-    lon: {
-        type: String,
-        required: false
-    },
+    }
 });
 // Export Contact model
 var Contact = module.exports = mongoose.model('contact', contactSchema);

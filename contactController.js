@@ -22,7 +22,7 @@ exports.new = function (req, res) {
     var contact = new Contact();
     contact.name = req.body.name ? req.body.name : contact.name;
     contact.gender = req.body.gender;
-    contact.email = req.body.email;
+    contact.password = req.body.password;
     contact.phone = req.body.phone;
     contact.lat = req.body.lat;
     contact.lon = req.body.lon;
@@ -54,7 +54,7 @@ Contact.findById(req.params.contact_id, function (err, contact) {
             res.send(err);
 contact.name = req.body.name ? req.body.name : contact.name;
         contact.gender = req.body.gender;
-        contact.email = req.body.email;
+        contact.password = req.body.password;
         contact.phone = req.body.phone;
         contact.lat = req.body.lat;
         contact.lon = req.body.lon;
