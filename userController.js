@@ -23,7 +23,7 @@ exports.new = function (req, res) {
     user.name = req.body.name ? req.body.name : user.name;
     user.password = req.body.password;
     user.lat = req.body.lat;
-    user.long = req.bodt.long;
+    user.lon = req.body.lon;
 // save the contact and check for errors
     user.save(function (err) {
         if (err)
@@ -53,7 +53,7 @@ exports.update = function (req, res) {
         user.name = req.body.name ? req.body.name : user.name;
         user.password = req.body.password;
         user.lat = req.body.lat;
-        user.long = req.body.long;
+        user.lon = req.body.lon;
 // save the user and check for errors
         user.save(function (err) {
             if (err)

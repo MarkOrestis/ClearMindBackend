@@ -17,7 +17,7 @@ var userSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    long: {
+    lon: {
         type: String,
         required: true
     }

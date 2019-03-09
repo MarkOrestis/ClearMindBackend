@@ -19,10 +19,6 @@ router.get('/locationKey', (req, res) => {
     });
 });
 
-router.post('/locationKey', (req, res) => {
-    
-})
-
 router.get('/currentConditions', (req, res) => {
     res.json(myIndex.data);
 });
