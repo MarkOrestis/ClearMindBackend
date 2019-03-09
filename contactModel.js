@@ -9,6 +9,10 @@ var contactSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    create_date: {
+        type: Date,
+        default: Date.now
     }
 });
 // Export Contact model
