@@ -12,15 +12,18 @@ let apiRoutes = require("./api-routes")
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 app.use(bodyParser.json());
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb+srv://omark:asdfgh1995@cluster0-e5dzr.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
+
+mongoose.connect('mongodb+srv://omark:'+ process.env.MONGO_ATLAS_PW +'@cluster0-e5dzr.mongodb.net/test?retryWrites=true', { useNewUrlParser: true });
 var db = mongoose.connection;
 // Setup server port
 var port = process.env.PORT || 8080;
+
 // Send message for default URL
 app.get('/', (req, res) => {
-    res.send('Hello World with Express and love')
+    res.send('Hello World with Express and love' + process.env.PORT);
 });
 // Use Api routes in the App
 app.use('/api', apiRoutes)
@@ -126,4 +129,4 @@ function getCurrentConditions(locationKey) {
     });
 }
 
-getLocationKey(); //calls get5DayForecast and getCurrentConditions
+//getLocationKey(); //calls get5DayForecast and getCurrentConditions
