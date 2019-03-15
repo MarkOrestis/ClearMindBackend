@@ -46,5 +46,7 @@ router.route('/users/:user_id')
     .patch(userController.update)
     .put(userController.update)
     .delete(userController.delete);
+router.route('/user/:name&:password')
+    .get(userController.authenticate);
 // Export API routes
 module.exports = router;

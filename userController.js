@@ -1,6 +1,7 @@
 // contactController.js
 // Import contact model
 User = require('./userModel');
+
 // Handle index actions
 exports.index = function (req, res) {
     User.get(function (err, users) {
@@ -36,6 +37,7 @@ exports.new = function (req, res) {
 };
 // Handle view contact info
 exports.view = function (req, res) {
+
     User.findById(req.params.user_id, function (err, user) {
         if (err)
             res.send(err);
@@ -78,3 +80,16 @@ exports.delete = function (req, res) {
         });
     });
 };
+
+exports.authenticate = (req, res) => {
+    User.find({name: req.params.name, password: req.params.password}).then(user => {
+        if (user.length > 0) {
+            res.json({
+                message: 'I exist!',
+                data: user   
+            })
+        }
+        res.json({message: 'i dont exist'});
+       
+    })
+}
