@@ -69,7 +69,8 @@ req.then(x => {
 
     fiveDayForecastRequest = axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + this.key, {
         params: {
-            apikey: 'A73eS4HfIiHVdvAhgCkFA9UJKHHUBvJy'
+            apikey: 'A73eS4HfIiHVdvAhgCkFA9UJKHHUBvJy',
+            details: true
         }
     }).then((response) => {
         this.dataForecast = response.data;
