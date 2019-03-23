@@ -6,6 +6,151 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 // Initialize the app
 let app = express();
+
+
+
+
+// //passport
+// let passport = require('passport');
+//const Strategy = require('passport-local');
+// var LocalStrategy = require('passport-local').Strategy;
+// var session = require('express-session');
+
+
+
+// app.use(passport.initialize()); // Used to initialize passport
+// app.use(passport.session()); // Used to persist login sessions
+
+// var strategy = new LocalStrategy(
+// {
+//   session: true
+// },
+// function (username, password, done) {
+//   User.findOne({ username: username }, function(err, user) {
+//     if (err) { return done(err); }
+//     if (!user) {
+//       return done(null, false, { message: 'Incorrect username.' });
+//     }
+//     if (user.password !== password) {
+//       return done(null, false, { message: 'Incorrect password.' });
+//     }
+//     return done(null, user);
+//   });
+// });
+
+// function genuuid(req) {
+//   return "Test UID";
+// }
+
+// app.use(session({
+//   genid: function(req) {
+//     return genuuid() // use UUIDs for session IDs
+//   },
+//   secret: "somethingSecret",
+//   cookie: {maxAge: 60000 },
+//   resave: true,
+//   saveUninitialized: false }));
+
+//// weird strategy i tried
+//// // Strategy config
+//// passport.use(new GoogleStrategy({
+////         clientID: 'YOUR_CLIENTID_HERE',
+////         clientSecret: 'YOUR_CLIENT_SECRET_HERE',
+////         callbackURL: 'http://localhost:8000/auth/google/callback'
+////     },
+////     (accessToken, refreshToken, profile, done) => {
+////         done(null, profile); // passes the profile data to serializeUser
+////     }
+//// ));
+
+// passport.use(new Strategy(  
+//   function(username, password, done) {
+//     // database dummy - find user and verify password
+//     if(username === 'username' && password === 'password'){
+//       done(null, {
+//         id: #,
+//         firstname: 'name',
+//         lastname: 'name',
+//         email: 'email@email',
+//         verified: true
+//       });
+//     }
+//     else {
+//       done(null, false);
+//     }
+//   }
+// ));
+
+//maybe this way?
+// passport.use('local-token', new LocalStrategy(
+//   function(token, done) {
+//     AccessToken.findOne({
+//       id: token
+//     }, function(error, accessToken) {
+//       if (error) {
+//         return done(error);
+//       }
+
+//       if (accessToken) {
+//         if (!token.isValid(accessToken)) {
+//           return done(null, false);
+//         }
+
+//         User.findOne({
+//           id: accessToken.userId
+//         }, function(error, user) {
+//           if (error) {
+//             return done(error);
+//           }
+
+//           if (!user) {
+//             return done(null, false);
+//           }
+
+//           return done(null, user);
+//         });
+//       } else {
+//         return done(null);
+//       }
+//     });
+//   }
+// ));
+// module.exports = passport;
+
+
+//passport.use(strategy);
+
+// // Used to stuff a piece of information into a cookie
+// passport.serializeUser((user, done) => {
+//     done(null, user);
+// });
+
+// // Used to decode the received cookie and persist session
+// passport.deserializeUser((user, done) => {
+//     done(null, user);
+// });
+
+//maybe this method?
+// passport.deserializeUser(function(id, done) {
+//   User.findById(id, function(err, user) {
+//     done(err, user);
+//   });
+// });
+
+
+
+// // Middleware to check if the user is authenticated
+// function isUserAuthenticated(req, res, next) {
+//     if (req.user) {
+//         next();
+//     } else {
+//         res.send('You must login!');
+//     }
+// }
+
+//app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login' }));
+
+
 // Import routes
 let apiRoutes = require("./api-routes")
 // Configure bodyparser to handle post requests
