@@ -26,6 +26,9 @@ router.get('/currentConditions', (req, res) => {
 router.get('/fiveDayForecast', (req, res) => {
     res.json(myIndex.dataForecast);
 });
+router.get('/pressureFiveDayForecast', (req, res) => {
+    res.json(myIndex.pressureForecast);
+});
 
 // TODO
 router.post('/', function (req, res) {
