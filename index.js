@@ -196,12 +196,11 @@ var req = axios.get('http://dataservice.accuweather.com/locations/v1/cities/geop
     });
 
 req.then(x => {
-    console.log('key: ', this.key);
     exports.key = this.key;
 
     currentConditionRequest = axios.get('http://dataservice.accuweather.com/currentconditions/v1/' + this.key, {
         params: {
-            apikey: 'A73eS4HfIiHVdvAhgCkFA9UJKHHUBvJy',
+            apikey: 'rkhFz5jAbAdFVbSy614sin8gdqXCSO4S',
             details: true
         }
     }).then((response) => {
@@ -214,7 +213,7 @@ req.then(x => {
 
     fiveDayForecastRequest = axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + this.key, {
         params: {
-            apikey: 'A73eS4HfIiHVdvAhgCkFA9UJKHHUBvJy',
+            apikey: 'rkhFz5jAbAdFVbSy614sin8gdqXCSO4S',
             details: true
         }
     }).then((response) => {
@@ -227,7 +226,43 @@ req.then(x => {
 });
 
 
+var req_pressure = axios.get('http://api.openweathermap.org/data/2.5/forecast?lat=33.4&lon=-84.3&APPID=2e8a951f3628ec369e2d3e1d04a87597')
+    .then((response) => {
+        console.log('===========================================')
+        // response.data.list.forEach((element, index)=> {
+        //     pressure.append(element.main.pressure);
+        //     // if (index < 8) {
+        //     //     // console.log(element.main.pressure);
 
+        //     //     day1 = day1 + element.main.pressure;
+        //     //     console.log(day1);
+        //     // }
+        //     // if (index >=8 && index < 16) {
+        //     //     day2 += element.main.pressure;
+        //     // }
+        //     // if (index >= 16 && index < 24) {
+        //     //     day3 += element.main.pressure;
+        //     // }
+        //     // if (index >= 24 && index < 32) {
+        //     //     day4 += element.main.pressure;
+        //     // }
+        //     // if (index >= 32 && index < 40) {
+        //     //     day5 += element.main.pressure;
+        //     // }        
+        // });
+        this.pressureForecast = response.data.list
+    }).catch((error) => {
+        console.log(error);
+    });
+
+req_pressure.then(x => {
+    console.log('hallo')
+    pressure = [];
+    this.pressureForecast.forEach(element => {
+        pressure.push(element.main.pressure);
+    })
+    console.log(pressureForecast);
+})
 
 // currentConditionRequest
 
@@ -275,5 +310,5 @@ function getCurrentConditions(locationKey) {
     });
 }
 
-getLocationKey(); //calls get5DayForecast and getCurrentConditions
+// getLocationKey(); //calls get5DayForecast and getCurrentConditions
 
